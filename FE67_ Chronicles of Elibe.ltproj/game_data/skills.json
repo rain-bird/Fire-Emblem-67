@@ -285,13 +285,23 @@
     {
         "nid": "Resistance_Plus5",
         "name": "Resistance +5",
-        "desc": "Grants RES +5. We don't have a separate RES stat though so I have no idea what this will do now.",
+        "desc": "Grants RES +5.",
         "icon_nid": "Skills",
         "icon_index": [
             9,
             9
         ],
-        "components": []
+        "components": [
+            [
+                "stat_change",
+                [
+                    [
+                        "RES",
+                        5
+                    ]
+                ]
+            ]
+        ]
     },
     {
         "nid": "Defense_Plus5",
@@ -401,6 +411,10 @@
                     [
                         "DEF",
                         15
+                    ],
+                    [
+                        "RES",
+                        20
                     ]
                 ]
             ],
@@ -448,7 +462,7 @@
                 "stat_change",
                 [
                     [
-                        "MAG",
+                        "RES",
                         7
                     ]
                 ]
@@ -461,7 +475,7 @@
                 "upkeep_stat_change",
                 [
                     [
-                        "MAG",
+                        "RES",
                         -1
                     ]
                 ]
@@ -807,6 +821,10 @@
                     [
                         "DEF",
                         10
+                    ],
+                    [
+                        "RES",
+                        10
                     ]
                 ]
             ]
@@ -840,6 +858,10 @@
                     [
                         "DEF",
                         10
+                    ],
+                    [
+                        "RES",
+                        15
                     ],
                     [
                         "LCK",
@@ -876,6 +898,10 @@
                     ],
                     [
                         "DEF",
+                        15
+                    ],
+                    [
+                        "RES",
                         15
                     ]
                 ]
@@ -1383,6 +1409,10 @@
                 [
                     [
                         "DEF",
+                        10
+                    ],
+                    [
+                        "RES",
                         10
                     ]
                 ]

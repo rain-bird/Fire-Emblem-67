@@ -1,16 +1,5 @@
 [
     {
-        "nid": "Placeholder",
-        "name": "Placeholder",
-        "desc": "If you see this, it's an error. Please report it.",
-        "icon_nid": null,
-        "icon_index": [
-            0,
-            0
-        ],
-        "components": []
-    },
-    {
         "nid": "Iron_Sword",
         "name": "Iron Sword",
         "desc": "",
@@ -77,7 +66,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ]
         ]
     },
@@ -148,7 +137,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ]
         ]
     },
@@ -219,7 +208,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ]
         ]
     },
@@ -330,7 +319,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -555,7 +544,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -701,7 +690,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -867,7 +856,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -1131,9 +1120,7 @@
             ],
             [
                 "prf_unit",
-                [
-                    "Lyn"
-                ]
+                []
             ],
             [
                 "effective_damage",
@@ -1232,7 +1219,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ]
         ]
     },
@@ -1707,7 +1694,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "uses",
@@ -1778,7 +1765,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "uses",
@@ -1829,7 +1816,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -1975,7 +1962,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "uses",
@@ -2141,7 +2128,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "uses",
@@ -2409,7 +2396,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -2492,7 +2479,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -3022,7 +3009,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ]
         ]
     },
@@ -3093,7 +3080,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "wexp",
@@ -3208,7 +3195,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -3306,7 +3293,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ]
         ]
     },
@@ -3373,7 +3360,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "value",
@@ -3563,7 +3550,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -3646,7 +3633,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -3816,7 +3803,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "weight",
@@ -4317,7 +4304,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "effective_damage",
@@ -4369,7 +4356,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -4535,7 +4522,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -4792,7 +4779,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -4879,7 +4866,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -5030,7 +5017,7 @@
             ],
             [
                 "damage",
-                5
+                8
             ],
             [
                 "hit",
@@ -5061,7 +5048,7 @@
             ],
             [
                 "wexp",
-                0
+                4
             ],
             [
                 "min_range",
@@ -5069,11 +5056,11 @@
             ],
             [
                 "max_range",
-                6
+                10
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "siege_weapon",
@@ -5093,7 +5080,7 @@
                         "Flying"
                     ],
                     "effective_multiplier": 1.0,
-                    "effective_bonus_damage": 10,
+                    "effective_bonus_damage": 16,
                     "show_effectiveness_flash": true,
                     "weapon_effectiveness_multiplied": true
                 }
@@ -5163,7 +5150,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "siege_weapon",
@@ -5253,7 +5240,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "siege_weapon",
@@ -5316,7 +5303,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "uses",
@@ -5391,7 +5378,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -5679,7 +5666,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "uses",
@@ -5750,7 +5737,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -6279,7 +6266,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "uses",
@@ -6803,7 +6790,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "map_hit_add_blend",
@@ -6855,7 +6842,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "magic",
@@ -7321,11 +7308,11 @@
             ],
             [
                 "weapon_type",
-                "Fire"
+                "Anima"
             ],
             [
                 "weapon_rank",
-                "C"
+                "E"
             ],
             [
                 "map_hit_add_blend",
@@ -7389,11 +7376,11 @@
             ],
             [
                 "weapon_type",
-                "Thunder"
+                "Anima"
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "map_hit_add_blend",
@@ -7472,7 +7459,7 @@
             ],
             [
                 "weapon_type",
-                "Fire"
+                "Anima"
             ],
             [
                 "weapon_rank",
@@ -7555,7 +7542,7 @@
             ],
             [
                 "weapon_type",
-                "Thunder"
+                "Anima"
             ],
             [
                 "weapon_rank",
@@ -7626,7 +7613,7 @@
             ],
             [
                 "weapon_type",
-                "Wind"
+                "Anima"
             ],
             [
                 "weapon_rank",
@@ -7701,7 +7688,7 @@
             ],
             [
                 "weapon_type",
-                "Wind"
+                "Anima"
             ],
             [
                 "weapon_rank",
@@ -7808,7 +7795,7 @@
             ],
             [
                 "weapon_rank",
-                "C"
+                "D"
             ],
             [
                 "map_hit_add_blend",
@@ -10072,7 +10059,7 @@
     {
         "nid": "Talisman",
         "name": "Talisman",
-        "desc": "Permanently raises Resistance by 2 points. That stat doesn't exist anymore though.",
+        "desc": "Permanently raises Resistance by 2 points.",
         "icon_nid": "Boosters",
         "icon_index": [
             0,
@@ -10097,6 +10084,15 @@
                     "lose_uses_on_miss": false,
                     "one_loss_per_combat": false
                 }
+            ],
+            [
+                "permanent_stat_change",
+                [
+                    [
+                        "RES",
+                        2
+                    ]
+                ]
             ],
             [
                 "usable_in_base",
@@ -10229,6 +10225,570 @@
         ]
     },
     {
+        "nid": "Hero_Crest",
+        "name": "Hero Crest",
+        "desc": "Promotes infantry classes.",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            9
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "value",
+                10000
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "prf_class",
+                [
+                    "Myrmidon",
+                    "Mercenary",
+                    "Fighter"
+                ]
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
+        "nid": "Knight_Crest",
+        "name": "Knight Crest",
+        "desc": "Promotes worthy Cavaliers and Knights.",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            10
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "value",
+                10000
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "prf_class",
+                [
+                    "Knight",
+                    "Cavalier"
+                ]
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
+        "nid": "Orion_Bolt",
+        "name": "Orion Bolt",
+        "desc": "Promotes archers.",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            11
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "value",
+                10000
+            ],
+            [
+                "prf_class",
+                [
+                    "Archer"
+                ]
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
+        "nid": "Elysian_Whip",
+        "name": "Elysian Whip",
+        "desc": "Promotes flying classes.",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            12
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "value",
+                10000
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "prf_class",
+                [
+                    "Pegasus_Knight",
+                    "Wyvern_Rider"
+                ]
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
+        "nid": "Guiding_Ring",
+        "name": "Guiding Ring",
+        "desc": "Promotes magic-using classes.",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            13
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "value",
+                10000
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "prf_class",
+                [
+                    "Monk",
+                    "Cleric",
+                    "Mage",
+                    "Shaman",
+                    "Troubadour"
+                ]
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
+        "nid": "Ocean_Seal",
+        "name": "Ocean Seal",
+        "desc": "Promotes Thieves and Pirates.",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            19
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "value",
+                10000
+            ],
+            [
+                "prf_class",
+                [
+                    "Pirate",
+                    "Thief"
+                ]
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
+        "nid": "Lunar_Brace",
+        "name": "Lunar Brace",
+        "desc": "Promotes Eirika.",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            15
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "prf_class",
+                [
+                    "Eirika_Lord"
+                ]
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
+        "nid": "Solar_Brace",
+        "name": "Solar Brace",
+        "desc": "Promotes Ephraim.",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            16
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "prf_class",
+                [
+                    "Ephraim_Lord"
+                ]
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
+        "nid": "Master_Seal",
+        "name": "Master Seal",
+        "desc": "Promotes all normal classes",
+        "icon_nid": "Boosters",
+        "icon_index": [
+            0,
+            14
+        ],
+        "components": [
+            [
+                "usable",
+                null
+            ],
+            [
+                "target_ally",
+                null
+            ],
+            [
+                "uses",
+                1
+            ],
+            [
+                "uses_options",
+                {
+                    "lose_uses_on_miss": false,
+                    "one_loss_per_combat": false
+                }
+            ],
+            [
+                "usable_in_base",
+                null
+            ],
+            [
+                "value",
+                20000
+            ],
+            [
+                "prf_class",
+                [
+                    "Myrmidon",
+                    "Mercenary",
+                    "Thief",
+                    "Cavalier",
+                    "Pegasus_Knight",
+                    "Knight",
+                    "Fighter",
+                    "Pirate",
+                    "Archer",
+                    "Monk",
+                    "Cleric",
+                    "Mage",
+                    "Shaman",
+                    "Troubadour",
+                    "Wyvern_Rider"
+                ]
+            ],
+            [
+                "promote",
+                null
+            ],
+            [
+                "eval_target_restrict_2",
+                "unit.level >= 10"
+            ],
+            [
+                "no_map_hp_display",
+                null
+            ],
+            [
+                "map_cast_pose",
+                null
+            ]
+        ]
+    },
+    {
         "nid": "Metis_s_Tome",
         "name": "Metis's Tome",
         "desc": "Permanently raises all of the user's growth rates by 5.",
@@ -10290,6 +10850,10 @@
                     ],
                     [
                         "DEF",
+                        5
+                    ],
+                    [
+                        "RES",
                         5
                     ]
                 ]
@@ -10952,7 +11516,7 @@
             ],
             [
                 "weapon_type",
-                "Wind"
+                "Anima"
             ],
             [
                 "weapon_rank",
@@ -11043,7 +11607,7 @@
         "components": [
             [
                 "weapon_triangle_override",
-                "Wind"
+                "Anima"
             ]
         ]
     },

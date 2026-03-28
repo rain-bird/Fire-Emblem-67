@@ -45,7 +45,7 @@
     },
     {
         "nid": "MAGIC_DEFENSE",
-        "expression": "MAG"
+        "expression": "RES"
     },
     {
         "nid": "MAGIC_RANGE",
@@ -69,7 +69,7 @@
     },
     {
         "nid": "RATING",
-        "expression": "(HP - 10)//2 + max(STR, MAG) + SKL + SPD + LCK//2 + DEF + MAG"
+        "expression": "(HP - 10)//2 + max(STR, MAG) + SKL + SPD + LCK//2 + DEF + RES"
     },
     {
         "nid": "RESCUE_AID",
@@ -100,6 +100,10 @@
         "expression": "SPD"
     },
     {
+        "nid": "MANA",
+        "expression": "20"
+    },
+    {
         "nid": "ZERO",
         "expression": "0"
     },
@@ -121,6 +125,6 @@
     },
     {
         "nid": "STATUS_STAFF_AVOID",
-        "expression": "MAG*5"
+        "expression": "RES*5"
     }
 ]
