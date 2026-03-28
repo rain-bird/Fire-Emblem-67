@@ -18,15 +18,6 @@
         "hidden_stat": false
     },
     {
-        "nid": "MAG",
-        "name": "Mag",
-        "maximum": 30,
-        "desc": "Magical power. Increases spell and staff effectiveness.",
-        "position": "left",
-        "growth_colors": false,
-        "hidden_stat": false
-    },
-    {
         "nid": "SKL",
         "name": "Skill",
         "maximum": 30,
@@ -49,7 +40,7 @@
         "name": "Luck",
         "maximum": 30,
         "desc": "Luck affects many things.",
-        "position": "right",
+        "position": "left",
         "growth_colors": false,
         "hidden_stat": false
     },
@@ -63,20 +54,11 @@
         "hidden_stat": false
     },
     {
-        "nid": "RES",
-        "name": "Res",
+        "nid": "MAG",
+        "name": "Mag",
         "maximum": 30,
-        "desc": "Reduces damage from magic.",
+        "desc": "Magical power. Increases spell and staff effectiveness.",
         "position": "left",
-        "growth_colors": false,
-        "hidden_stat": false
-    },
-    {
-        "nid": "CON",
-        "name": "Con",
-        "maximum": 25,
-        "desc": "Constitution. Affects how well the unit can wield heavier weapons.",
-        "position": "right",
         "growth_colors": false,
         "hidden_stat": false
     },
@@ -85,6 +67,15 @@
         "name": "Move",
         "maximum": 15,
         "desc": "The distance you can move in one turn.",
+        "position": "right",
+        "growth_colors": false,
+        "hidden_stat": false
+    },
+    {
+        "nid": "CON",
+        "name": "Con",
+        "maximum": 25,
+        "desc": "Constitution. Affects how well the unit can wield heavier weapons.",
         "position": "right",
         "growth_colors": false,
         "hidden_stat": false
