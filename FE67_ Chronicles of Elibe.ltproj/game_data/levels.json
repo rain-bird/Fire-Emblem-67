@@ -246,11 +246,16 @@
         "tilemap": "Chapter 1_1",
         "bg_tilemap": "Chapter 1_1",
         "party": "Eirika",
-        "music": {},
+        "music": {
+            "player_phase": "Quiet Burn",
+            "enemy_phase": "Shadow of the Enemy",
+            "enemy_battle": null,
+            "player_battle": "Attack"
+        },
         "objective": {
-            "simple": "objective",
-            "win": "win",
-            "loss": "lose"
+            "simple": "Capture all castles",
+            "win": "Seize castle Cutthroat,Seize castle Soldier",
+            "loss": "Lyn dies,Your Castle is seized"
         },
         "roam": false,
         "roam_unit": null,
@@ -1134,10 +1139,282 @@
                 "variant": null,
                 "level": 1,
                 "klass": "Fighter",
-                "faction": "Soldier",
+                "faction": "Cutthroat",
                 "starting_items": [
                     [
                         "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Attack",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": [
+                    14,
+                    7
+                ],
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "102",
+                "variant": null,
+                "level": 1,
+                "klass": "Brigand",
+                "faction": "Cutthroat",
+                "starting_items": [
+                    [
+                        "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Pursue",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": [
+                    7,
+                    9
+                ],
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "test_boss",
+                "variant": null,
+                "level": 1,
+                "klass": "Warrior",
+                "faction": "Cutthroat",
+                "starting_items": [
+                    [
+                        "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Defend",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": [
+                    17,
+                    9
+                ],
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "104",
+                "variant": null,
+                "level": 1,
+                "klass": "Archer",
+                "faction": "Cutthroat",
+                "starting_items": [
+                    [
+                        "Iron_Bow",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Guard",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": [
+                    16,
+                    8
+                ],
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "105",
+                "variant": null,
+                "level": 1,
+                "klass": "Archer",
+                "faction": "Cutthroat",
+                "starting_items": [
+                    [
+                        "Short_Bow",
+                        false
+                    ]
+                ],
+                "starting_skills": [
+                    "Kill_This_Guy_NOW"
+                ],
+                "team": "enemy",
+                "ai": "Guard",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": [
+                    7,
+                    7
+                ],
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "106",
+                "variant": null,
+                "level": 1,
+                "klass": "Thief",
+                "faction": "Enemy",
+                "starting_items": [
+                    [
+                        "Torch",
+                        true
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Guard",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": [
+                    2,
+                    7
+                ],
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "reinforce1",
+                "variant": null,
+                "level": 1,
+                "klass": "Brigand",
+                "faction": "Enemy",
+                "starting_items": [
+                    [
+                        "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Pursue",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": null,
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "reinforce2",
+                "variant": null,
+                "level": 1,
+                "klass": "Brigand",
+                "faction": "Enemy",
+                "starting_items": [
+                    [
+                        "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Pursue",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": null,
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "reinforce3",
+                "variant": null,
+                "level": 1,
+                "klass": "Brigand",
+                "faction": "Enemy",
+                "starting_items": [
+                    [
+                        "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Pursue",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": null,
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "reinforce4",
+                "variant": null,
+                "level": 1,
+                "klass": "Brigand",
+                "faction": "Enemy",
+                "starting_items": [
+                    [
+                        "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Pursue",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": null,
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "reinforce5",
+                "variant": null,
+                "level": 1,
+                "klass": "Brigand",
+                "faction": "Enemy",
+                "starting_items": [
+                    [
+                        "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Pursue",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": null,
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "reinforce6",
+                "variant": null,
+                "level": 1,
+                "klass": "Brigand",
+                "faction": "Enemy",
+                "starting_items": [
+                    [
+                        "Iron_Axe",
+                        false
+                    ]
+                ],
+                "starting_skills": [],
+                "team": "enemy",
+                "ai": "Pursue",
+                "roam_ai": null,
+                "ai_group": "",
+                "starting_position": null,
+                "starting_traveler": null,
+                "generic": true
+            },
+            {
+                "nid": "103",
+                "variant": null,
+                "level": 1,
+                "klass": "Soldier",
+                "faction": "Soldier",
+                "starting_items": [
+                    [
+                        "Slim_Lance",
                         false
                     ]
                 ],
@@ -1147,8 +1424,8 @@
                 "roam_ai": null,
                 "ai_group": "",
                 "starting_position": [
-                    1,
-                    5
+                    20,
+                    12
                 ],
                 "starting_traveler": null,
                 "generic": true
@@ -1159,15 +1436,15 @@
                 "nid": "OtherCastle_a",
                 "region_type": "event",
                 "position": [
-                    7,
-                    2
+                    18,
+                    7
                 ],
                 "size": [
                     1,
                     1
                 ],
                 "sub_nid": "Seize",
-                "highlight": null,
+                "highlight": "red",
                 "condition": "True",
                 "time_left": null,
                 "only_once": false,
@@ -1186,7 +1463,7 @@
                     1
                 ],
                 "sub_nid": "Visit",
-                "highlight": null,
+                "highlight": "green",
                 "condition": "True",
                 "time_left": null,
                 "only_once": false,
@@ -1205,7 +1482,7 @@
                     1
                 ],
                 "sub_nid": "Visit",
-                "highlight": null,
+                "highlight": "yellow",
                 "condition": "True",
                 "time_left": null,
                 "only_once": false,
@@ -1214,7 +1491,12 @@
             }
         ],
         "unit_groups": [],
-        "ai_groups": []
+        "ai_groups": [
+            {
+                "nid": "",
+                "trigger_threshold": 1
+            }
+        ]
     },
     {
         "nid": "1",
