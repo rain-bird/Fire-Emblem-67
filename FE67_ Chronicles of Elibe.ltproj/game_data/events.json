@@ -2968,234 +2968,167 @@
         "nid": "5 Arena"
     },
     {
-        "name": "DeathArtur",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Artur'",
+        "name": "RunCastle_Arena",
+        "trigger": "Arena",
+        "level_nid": "test",
+        "condition": "True",
         "commands": [],
         "only_once": false,
         "priority": 20,
         "_source": [
-            "add_portrait;Artur;FarRight",
-            "speak;Artur;The rest... is up to you.",
-            "expression;Artur;CloseEyes",
-            "remove_portrait;Artur"
+            "# Get the NIDs and positions of all units on the map and store them into variables. This will be used to put the units back after the arena battle.",
+            "# NOTE: Destructible tiles will NOT respawn on the map after entering the arena. It is highly recommend you put all destructible tiles in a unit group and add an 'add_group' event command at the end of the code to reinsert any destructible tiles.",
+            "",
+            "#level_var;SavedUnitNids;[unit.nid for unit in game.get_all_units()]",
+            "#level_var;SavedUnitPositions;[unit.position for unit in game.get_all_units()]",
+            "",
+            "# Changes terrain to Arena terrain. Add an Arena layer to the tilemap in the Tilemap editor to chapters with an arena.",
+            "show_layer;Arena;immediate",
+            "transition;Close",
+            "#remove_all_units",
+            "add_unit;{unit};{position};immediate;stack",
+            "# Adds a dummy unit so that chapters with a Rout objective don't trigger their win condition after winning an arena battle",
+            "#make_generic;DUMMY;Citizen;1;enemy;None;Enemy",
+            "#add_unit;DUMMY;{position};immediate;stack",
+            "",
+            "# Find tier of class of player unit to determine enemy's tier",
+            "level_var;EnemyTier;DB.classes.get(unit.klass).tier",
+            "# Randomly choose the enemy's class from the pool. Add the tag ArenaIgnore to any classes that won't show up in the arena.",
+            "level_var;ArenaEnemyKlassList;[klass.nid for klass in DB.classes if 'ArenaIgnore' not in klass.tags and klass.tier == game.level_vars['EnemyTier']]",
+            "level_var;KlassRNG;game.get_random(0, len(game.level_vars['ArenaEnemyKlassList']) - 1)",
+            "level_var;ArenaEnemyKlass;game.level_vars['ArenaEnemyKlassList'][game.level_vars['KlassRNG']]",
+            "# Calculate level range for enemy and pick level at random",
+            "level_var;low_level;max(1,unit.level - 4)",
+            "level_var;high_level;min(20, unit.level + 4)",
+            "level_var;EnemyLevel;game.get_random(game.level_vars['low_level'],game.level_vars['high_level'])",
+            "# Calculate arena wager based on enemy level",
+            "level_var;ArenaPercent;(game.level_vars['EnemyLevel'] - game.level_vars['low_level']) / float(game.level_vars['high_level'] - game.level_vars['low_level'])",
+            "level_var;ArenaWager;int(min(550 + game.level_vars['ArenaPercent'] * (1100 - 550), unit.personal_funds))",
+            "# Spawn enemy",
+            "make_generic;;{v:ArenaEnemyKlass};{v:EnemyLevel};enemy;None;Enemy",
+            "add_unit;{created_unit};{e:game.get_unit('{unit}').position[0]},{e:game.get_unit('{unit}').position[1] - 1};immediate;stack",
+            "# Equip enemy with weapon. Determines what weapons are available to equip based on usability defined in the Class Editor.",
+            "level_var;WeaponDict;{'Sword':'Iron_Sword','Lance':'Iron_Lance','Axe':'Iron_Axe','Bow':'Iron_Bow','Fire':'Fire','Thunder':'Thunder','Wind':'Fire','Light':'Lightning','Dark':'Flux'}",
+            "for;LoadItem;[w for w in DB.classes.get(game.get_unit('{created_unit}').klass).wexp_gain if DB.classes.get(game.get_unit('{created_unit}').klass).wexp_gain[w].usable == True]",
+            "    set_wexp;{created_unit};{LoadItem};1;no_banner",
+            "    give_item;{created_unit};{e:game.level_vars['WeaponDict']['{LoadItem}']};no_banner",
+            "endf",
+            "# Randomly choose which weapon to equip.",
+            "level_var;InventorySlot;game.get_random(0,len(game.get_unit('{created_unit}').items) - 1)",
+            "equip_item;{created_unit};{e:game.get_unit('{created_unit}').items[{v:InventorySlot}]}",
+            "#Moves the unit away from the player unit so they can retaliate if equipped with a bow.",
+            "if;game.get_unit('{created_unit}').get_weapon().weapon_type.value == 'Bow'",
+            "    move_unit;{created_unit};{e:game.get_unit('{unit}').position[0]},{e:game.get_unit('{unit}').position[1] - 2};immediate;stack",
+            "end",
+            "change_background;Arena",
+            "draw_overlay_sprite;ArenaPortrait;arena_portrait;4,4;1",
+            "table;GoldDisplay;unit.personal_funds;;;60;right;funds_display;;center;expression",
+            "# Fade to arena background",
+            "transition;open",
+            "music;Arena Entrance",
+            "if;unit.personal_funds == 0",
+            "    speak;;What! You don't have any money! Get out of here!;top_right;160;noir",
+            "elif;unit.get_weapon()",
+            "    speak;;Welcome to the arena!;top_right;160;noir",
+            "    # Get name of class to display on table",
+            "    level_var;ArenaEnemyKlass;DB.classes.get(game.get_unit('{created_unit}').klass).name",
+            "    level_var;ArenaItem;game.get_unit('{created_unit}').get_weapon().name",
+            "    textbox;OpponentStats;Opponent:{br}{v:ArenaEnemyKlass} - {v:ArenaItem};bottom;140;2",
+            "    choice;ArenaChoice;Would you like to wager {var:ArenaWager} gold?;Yes,No;backable",
+            "    if;game.game_vars['ArenaChoice'] == 'Yes'",
+            "        sound;GoldExchange",
+            "        give_money;{unit};{e:-game.level_vars['ArenaWager']};no_banner",
+            "        change_music;player_battle;Arena Battle",
+            "        speak;;Good luck. Don't get yourself killed.|Fight 'til defeat or press B to yield.;top_right;160;noir",
+            "        remove_table;OpponentStats",
+            "        transition;close",
+            "        change_background",
+            "        interact_unit;{unit};{created_unit};;;20;arena;force_animation",
+            "        end_skip",
+            "        if;game.check_dead('{created_unit}')",
+            "            change_background;Arena",
+            "            transition;open",
+            "            music;Arena Victory",
+            "            speak;;So you won, eh? Here's your prize. {e:2*game.level_vars['ArenaWager']} gold.;top_right;160;noir",
+            "            sound;GoldExchange",
+            "            give_money;{unit};{e:2*game.level_vars['ArenaWager']}",
+            "            music_fade_back;100",
+            "        end",
+            "        change_music;player_battle;Attack",
+            "        has_visited;{unit};attacked",
+            "    else",
+            "        speak;;What are you wasting my time for?;top_right;160;noir",
+            "        remove_table;OpponentStats",
+            "    end",
+            "else",
+            "    speak;;What! You don't have a weapon! Get out of here!;top_right;160;noir",
+            "end",
+            "",
+            "transition;close",
+            "# Clean up after a round at the arena.",
+            "change_background",
+            "hide_layer;Arena;immediate",
+            "remove_unit;{created_unit};immediate",
+            "remove_table;GoldDisplay",
+            "remove_overlay_sprite;ArenaPortrait",
+            "",
+            "transition;open",
+            "music_fade_back",
+            "",
+            "trigger_script;test RunCastle_Market;{unit}"
         ],
-        "nid": "Global DeathArtur"
+        "nid": "test RunCastle_Arena"
     },
     {
-        "name": "DeathColm",
+        "name": "DeathLyn",
         "trigger": "combat_death",
         "level_nid": null,
-        "condition": "unit.nid == 'Colm'",
+        "condition": "unit.nid == 'Lyn'",
         "commands": [],
         "only_once": false,
         "priority": 20,
         "_source": [
-            "add_portrait;Colm;FarRight",
-            "speak;Colm;To think of it... Me... In this place...|Neimi...",
-            "expression;Colm;CloseEyes",
-            "remove_portrait;Colm"
+            "music;In Sorrows Shroud",
+            "add_portrait;Lyn;FarRight",
+            "speak;Lyn;No... It's not...{br}I'm sorry...{w}{br}Everyone...forgive me...",
+            "expression;Lyn;CloseEyes",
+            "remove_portrait;Lyn"
         ],
-        "nid": "Global DeathColm"
+        "nid": "Global DeathLyn"
     },
     {
-        "name": "DeathEirika",
-        "trigger": "combat_death",
+        "name": "DeathLyn_1",
+        "trigger": "unit_death",
         "level_nid": null,
-        "condition": "unit.nid == 'Eirika'",
+        "condition": "unit.nid == 'Lyn'",
         "commands": [],
         "only_once": false,
         "priority": 20,
         "_source": [
-            "add_portrait;Eirika;FarRight",
-            "speak;Eirika;Brother... I'm sorry.",
-            "expression;Eirika;CloseEyes",
-            "remove_portrait;Eirika",
-            "remove_unit;Eirika",
+            "sound;Death",
+            "remove_unit;Lyn;fade",
+            "wait;500",
+            "t;close;2000",
             "lose_game"
         ],
-        "nid": "Global DeathEirika"
+        "nid": "Global DeathLyn_1"
     },
     {
-        "name": "DeathFranz",
+        "name": "DeathSain",
         "trigger": "combat_death",
         "level_nid": null,
-        "condition": "unit.nid == 'Franz'",
+        "condition": "unit.nid == 'Sain'",
         "commands": [],
         "only_once": false,
         "priority": 20,
         "_source": [
-            "add_portrait;Franz;FarRight",
-            "speak;Franz;I'm sorry, General Seth...",
-            "expression;Franz;CloseEyes",
-            "remove_portrait;Franz"
+            "music;In Sorrows Shroud",
+            "add_portrait;Sain;FarRight",
+            "speak;Sain;Lady Lyndis...{w}{br}I...was...so happy...",
+            "expression;Sain;CloseEyes",
+            "remove_portrait;Sain"
         ],
-        "nid": "Global DeathFranz"
-    },
-    {
-        "name": "DeathGarcia",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Garcia'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Garcia;FarRight",
-            "speak;Garcia;I have no regrets.{br}This was always my fate.",
-            "expression;Garcia;CloseEyes",
-            "remove_portrait;Garcia"
-        ],
-        "nid": "Global DeathGarcia"
-    },
-    {
-        "name": "DeathGilliam",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Gilliam'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Gilliam;FarRight",
-            "speak;Gilliam;I was prepared for...{br}anything...",
-            "expression;Gilliam;CloseEyes",
-            "remove_portrait;Gilliam"
-        ],
-        "nid": "Global DeathGilliam"
-    },
-    {
-        "name": "DeathJoshua",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Joshua'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Joshua;FarRight",
-            "speak;Joshua;I... I guess my luck finally ran out...|Heh.",
-            "expression;Joshua;CloseEyes",
-            "remove_portrait;Joshua"
-        ],
-        "nid": "Global DeathJoshua"
-    },
-    {
-        "name": "DeathLute",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Lute'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Lute;FarRight",
-            "speak;Lute;I...{br}I don't want to die...",
-            "expression;Lute;CloseEyes",
-            "remove_portrait;Lute"
-        ],
-        "nid": "Global DeathLute"
-    },
-    {
-        "name": "DeathMoulder",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Moulder'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Moulder;FarRight",
-            "speak;Moulder;I am sorry. I believe this is as far as I go...",
-            "expression;Moulder;CloseEyes",
-            "remove_portrait;Moulder"
-        ],
-        "nid": "Global DeathMoulder"
-    },
-    {
-        "name": "DeathNatasha",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Natasha'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Natasha;FarRight",
-            "if;game.level.nid == '5'",
-            "speak;Natasha;I can't let myself die here...|Someone has to hear my tale...",
-            "else",
-            "speak;Natasha;My fate is irrelevant...|The world must have... light.",
-            "end",
-            "expression;Natasha;CloseEyes",
-            "remove_portrait;Natasha"
-        ],
-        "nid": "Global DeathNatasha"
-    },
-    {
-        "name": "DeathNeimi",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Neimi'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Neimi;FarRight",
-            "speak;Neimi;You were right, Colm...|I am a klutz. Sorry...",
-            "expression;Neimi;CloseEyes",
-            "remove_portrait;Neimi"
-        ],
-        "nid": "Global DeathNeimi"
-    },
-    {
-        "name": "DeathRoss",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Ross'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Ross;FarRight",
-            "speak;Ross;I... am a warrior to the very end.",
-            "expression;Ross;CloseEyes",
-            "remove_portrait;Ross"
-        ],
-        "nid": "Global DeathRoss"
-    },
-    {
-        "name": "DeathSeth",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Seth'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Seth;FarRight",
-            "speak;Seth;Urgh...|My apologies. I must withdraw.",
-            "expression;Seth;CloseEyes",
-            "remove_portrait;Seth"
-        ],
-        "nid": "Global DeathSeth"
-    },
-    {
-        "name": "DeathVanessa",
-        "trigger": "combat_death",
-        "level_nid": null,
-        "condition": "unit.nid == 'Vanessa'",
-        "commands": [],
-        "only_once": false,
-        "priority": 20,
-        "_source": [
-            "add_portrait;Vanessa;FarRight",
-            "speak;Vanessa;Please...|Forgive me...",
-            "expression;Vanessa;CloseEyes",
-            "remove_portrait;Vanessa"
-        ],
-        "nid": "Global DeathVanessa"
+        "nid": "Global DeathSain"
     },
     {
         "name": "Debug Setup",
@@ -3915,7 +3848,7 @@
         "nid": "Global RunCastle_units"
     },
     {
-        "name": "RunCastle_Arena",
+        "name": "RunCastle_Arena_dummy",
         "trigger": null,
         "level_nid": "test",
         "condition": "True",
@@ -3958,7 +3891,7 @@
             "level_var;high_level;min(DB.classes.get(game.level_vars['ArenaEnemyKlass']).max_level, unit.level + 4)",
             "level_var;ArenaEnemyLevel;game.get_random(game.level_vars['low_level'], game.level_vars['high_level'])"
         ],
-        "nid": "test RunCastle_Arena"
+        "nid": "test RunCastle_Arena_dummy"
     },
     {
         "name": "vanilla_lt_arena",
@@ -4049,22 +3982,26 @@
             "$t \"close\"",
             "$t \"open\"",
             "",
-            "#The return of this thing",
-            "playerCurrentUnit = None",
-            "for i in {unit}:",
-            "    playerCurrentUnit = i",
+            "current_unit = game.get_unit(game.game_vars['_chosenUnit'])",
             "",
             "#Grab the variables that the castle Shop needs in order to function",
             "shopGoods = game.game_vars['_castleArmoryGoods']",
             "shopStock = game.game_vars['_castleArmoryStock']",
             "castleShopID = game.game_vars['_currentCastle']",
-            "#print(game.game_vars['_castleArmoryGoods'])",
             "",
-            "#Run the castle shop",
-            "$shop playerCurrentUnit shopGoods StockList=shopStock ShopId=castleShopID",
+            "#If you load into a shop that has had an option removed, the game will crash. So we check if the shop has been initialized; if it has, we run it slightly differently.",
+            "initializedShop = \"_\" + game.game_vars['_currentCastle'] + \"_initializedArmory\"",
+            "if game.level_vars[initializedShop] == 0:",
+            "    #Run and initiate the castle shop",
+            "    $shop current_unit shopGoods StockList=shopStock ShopId=castleShopID",
+            "else:",
+            "    #Get the initialized data",
+            "    shopGoods = game.level_vars[initializedShop]",
+            "    #Run the initialized castle shop",
+            "    $shop current_unit shopGoods[0] StockList=shopGoods[1] ShopId=castleShopID",
             "",
             "#Return the player to the castle market when they're done",
-            "$trigger_script \"test RunCastle_Market\" playerCurrentUnit"
+            "$trigger_script \"test RunCastle_Market\" current_unit"
         ],
         "nid": "test RunCastle_Armory"
     },
@@ -4105,20 +4042,25 @@
             "",
             "#Handle the player's choice",
             "if;'{v:_castleChoice}' == 'Repair'",
-            "    speak;Merlinus_Vendor;no repairs yet.",
+            "    #I added a new function just to make this work.",
+            "    repair_shop;{v:_chosenUnit}",
+            "    trigger_script;test RunCastle_Market;{v:_chosenUnit}",
             "elif;'{v:_castleChoice}' == 'Pawn Shop'",
+            "    #WIP",
             "    speak;Merlinus_Vendor;no pawning yet.",
             "elif;'{v:_castleChoice}' == 'Inventory'",
             "    open_convoy;{v:_chosenUnit}",
             "    trigger_script;test RunCastle_Market;{v:_chosenUnit}",
             "elif;'{v:_castleChoice}' == 'Arena'",
+            "    #WIP",
             "",
-            "    speak;{v:_chosenUnit};\"This isn't finished yet.\"",
-            "    level_var;_refresh;True",
-            "    trigger_script;test RunCastle_Market;{v:_chosenUnit}",
-            "    #trigger_script;test vanilla_lt_arena;{unit}",
+            "    #speak;{v:_chosenUnit};\"This isn't finished yet.\"",
+            "    #level_var;_refresh;True",
+            "    #trigger_script;test RunCastle_Market;{v:_chosenUnit}",
+            "    trigger_script;test RunCastle_Arena;{v:_chosenUnit}",
             "    ",
             "elif;'{v:_castleChoice}' == 'Augury'",
+            "    #WIP",
             "    speak;;no fortune telling yet.",
             "elif;'{v:_castleChoice}' == 'Armory'",
             "    trigger_script;test RunCastle_Armory;{v:_chosenUnit}",
@@ -4353,5 +4295,201 @@
             "speak;;test"
         ],
         "nid": "test unitKilled_Soldier_react"
+    },
+    {
+        "name": "skill_SwordProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Sword;1;no_banner",
+            "give_skill;{unit};Sword_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Sword_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_SwordProf"
+    },
+    {
+        "name": "skill_LanceProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Lance;1;no_banner",
+            "give_skill;{unit};Lance_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Lance_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_LanceProf"
+    },
+    {
+        "name": "skill_AxeProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Axe;1;no_banner",
+            "give_skill;{unit};Axe_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Axe_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_AxeProf"
+    },
+    {
+        "name": "skill_BowProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Bow;1;no_banner",
+            "give_skill;{unit};Bow_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Bow_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_BowProf"
+    },
+    {
+        "name": "skill_LightProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Light;1;no_banner",
+            "give_skill;{unit};Light_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Light_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_LightProf"
+    },
+    {
+        "name": "skill_DarkProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Dark;1;no_banner",
+            "give_skill;{unit};Dark_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Dark_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_DarkProf"
+    },
+    {
+        "name": "skill_FireProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Fire;1;no_banner",
+            "give_skill;{unit};Fire_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Fire_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_FireProf"
+    },
+    {
+        "name": "skill_WindProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Wind;1;no_banner",
+            "give_skill;{unit};Wind_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Wind_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_WindProf"
+    },
+    {
+        "name": "skill_ThunderProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Thunder;1;no_banner",
+            "give_skill;{unit};Thunder_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Thunder_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_ThunderProf"
+    },
+    {
+        "name": "skill_StaffProf",
+        "trigger": null,
+        "level_nid": null,
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "give_wexp;{unit};Staff;1;no_banner",
+            "give_skill;{unit};Staff_Proficiency_visonly;no_banner",
+            "remove_skill;{unit};Staff_Proficiency;no_banner"
+        ],
+        "nid": "Global skill_StaffProf"
+    },
+    {
+        "name": "getItems_preCombat",
+        "trigger": "combat_start",
+        "level_nid": "test",
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "level_var;_preCombatNum;len(unit.items)",
+            "level_var;_preCombatItem;unit.get_weapon().uid"
+        ],
+        "nid": "test getItems_preCombat"
+    },
+    {
+        "name": "getItems_postCombat",
+        "trigger": "combat_end",
+        "level_nid": "test",
+        "condition": "True",
+        "commands": [],
+        "only_once": false,
+        "priority": 20,
+        "_source": [
+            "#pyev1",
+            "from app.engine import item_funcs",
+            "",
+            "game.level_vars[\"_postCombatNum\"] = len(unit.items)",
+            "",
+            "if game.level_vars['_postCombatNum'] < game.level_vars['_preCombatNum']:",
+            "    #Get the item that was broken.",
+            "    broken_weapon = game.get_item(game.level_vars['_preCombatItem'])",
+            "",
+            "    #Get the nid of the broken item that corresponds to the weapon type of the item that was broken.",
+            "    new_item_nid = \"Broken_\" + item_system.weapon_type(unit, broken_weapon)",
+            "    #Create that broken item",
+            "    new_item = item_funcs.create_item(unit,new_item_nid)",
+            "",
+            "    #Set up the broken item's description and repair properties",
+            "    new_item.desc = \"A broken \" + broken_weapon.name + \".{br}It could be repaired.\"",
+            "    new_item.broken_nid = broken_weapon.nid",
+            "",
+            "    #Add the broken item to the unit that broke it",
+            "    unit.items.append(new_item)"
+        ],
+        "nid": "test getItems_postCombat"
     }
 ]

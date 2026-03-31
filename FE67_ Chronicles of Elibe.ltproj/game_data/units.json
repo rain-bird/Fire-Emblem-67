@@ -7,7 +7,8 @@
         "level": 4,
         "klass": "Eirika_Lord",
         "tags": [
-            "Lord"
+            "Lord",
+            "Female"
         ],
         "bases": {
             "HP": 18,
@@ -44,11 +45,11 @@
         },
         "starting_items": [
             [
-                "Vulnerary",
+                "Iron_Sword",
                 false
             ],
             [
-                "Rapier",
+                "Vulnerary",
                 false
             ]
         ],
@@ -57,7 +58,7 @@
         "wexp_gain": {
             "Sword": [
                 true,
-                251,
+                1,
                 251
             ],
             "Lance": [
@@ -113,7 +114,9 @@
         "variant": "",
         "level": 4,
         "klass": "Cavalier",
-        "tags": [],
+        "tags": [
+            "Male"
+        ],
         "bases": {
             "HP": 22,
             "STR": 9,
@@ -163,7 +166,7 @@
             ],
             "Lance": [
                 true,
-                71,
+                1,
                 251
             ],
             "Axe": [
@@ -214,7 +217,9 @@
         "variant": "",
         "level": 5,
         "klass": "Cavalier",
-        "tags": [],
+        "tags": [
+            "Male"
+        ],
         "bases": {
             "HP": 23,
             "STR": 8,
@@ -259,7 +264,7 @@
         "wexp_gain": {
             "Sword": [
                 true,
-                71,
+                1,
                 251
             ],
             "Lance": [
@@ -315,7 +320,9 @@
         "variant": "",
         "level": 4,
         "klass": "Archer",
-        "tags": [],
+        "tags": [
+            "Male"
+        ],
         "bases": {
             "HP": 21,
             "STR": 6,
@@ -375,7 +382,7 @@
             ],
             "Bow": [
                 false,
-                181,
+                1,
                 251
             ],
             "Staff": [
@@ -779,7 +786,12 @@
                 false
             ]
         ],
-        "learned_skills": [],
+        "learned_skills": [
+            [
+                1,
+                "Thunder_Proficiency"
+            ]
+        ],
         "unit_notes": [],
         "wexp_gain": {
             "Sword": [
