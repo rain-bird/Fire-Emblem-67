@@ -3782,7 +3782,7 @@
             "#Temp",
             "$give_money \"Lyn\" 10000",
             "#$set_item_uses \"Lyn\" \"Iron_Sword\" 2",
-            "$set_item_uses \"test_boss\" \"Steel_Axe\" 1"
+            "#$set_item_uses \"test_boss\" \"Steel_Axe\" 1"
         ],
         "nid": "test start_testMap"
     },
@@ -4418,8 +4418,6 @@
             "if noSkip_target and target.team == 'enemy' and targetWpn.kills == 50:",
             "    kill_banner(target,targetWpn,'Fenrir1')",
             "    $wait 300",
-            "",
-            "",
             "",
             "##################",
             "#Item Break Logic#",
