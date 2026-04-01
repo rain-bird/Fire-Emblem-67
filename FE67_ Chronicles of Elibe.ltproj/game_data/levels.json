@@ -1844,9 +1844,7 @@
                         false
                     ]
                 ],
-                "starting_skills": [
-                    "Critical"
-                ],
+                "starting_skills": [],
                 "team": "enemy",
                 "ai": "Defend",
                 "roam_ai": null,
