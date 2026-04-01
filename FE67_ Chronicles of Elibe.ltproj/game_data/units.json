@@ -786,12 +786,7 @@
                 false
             ]
         ],
-        "learned_skills": [
-            [
-                1,
-                "Thunder_Proficiency"
-            ]
-        ],
+        "learned_skills": [],
         "unit_notes": [],
         "wexp_gain": {
             "Sword": [
@@ -1220,7 +1215,7 @@
         },
         "starting_items": [
             [
-                "Killing_Edge",
+                "Rapier",
                 false
             ]
         ],
@@ -6100,7 +6095,7 @@
     },
     {
         "nid": "Yogi",
-        "name": "Breguet",
+        "name": "Yogi",
         "desc": "Commander of a Grado military force.",
         "variant": "",
         "level": 4,

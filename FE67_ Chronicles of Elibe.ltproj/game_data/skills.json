@@ -2630,5 +2630,29 @@
                 20
             ]
         ]
+    },
+    {
+        "nid": "Critical",
+        "name": "Critical",
+        "desc": "This unit's current weapon can critically hit.",
+        "icon_nid": "Skills",
+        "icon_index": [
+            6,
+            9
+        ],
+        "components": [
+            [
+                "hidden_if_inactive",
+                null
+            ],
+            [
+                "condition",
+                "unit.get_weapon() and game.get_item(unit.get_weapon().uid).kills >= 50"
+            ],
+            [
+                "eval_crit",
+                "unit.stats['SKL']"
+            ]
+        ]
     }
 ]
